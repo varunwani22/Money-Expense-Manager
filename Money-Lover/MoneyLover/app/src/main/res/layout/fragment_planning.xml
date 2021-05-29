@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.planning_fragment.PlanningFragment">
+    <RelativeLayout
+        android:id="@+id/planningCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/tvPlanning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/dp10"
+            android:layout_marginStart="@dimen/dp_20"
+            android:text="@string/planning"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvPursess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/dp10"
+            android:background="@drawable/ic_purse" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/budCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/planningCard">
+        <TextView
+            android:id="@+id/drawableBudgets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            android:background="@drawable/ic_baseline_ballot_24" />
+        <TextView
+            android:id="@+id/tvBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/drawableBudgets"
+            android:text="Budgets"
+            android:textColor="@color/green"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBudget"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toRightOf="@id/drawableBudgets"
+            android:text="@string/A_financial"
+            android:textSize="@dimen/sp15" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/eventCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/budCard">
+        <TextView
+            android:id="@+id/drawableEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            android:background="@drawable/ic_baseline_calendar_today_24" />
+        <TextView
+            android:id="@+id/tvEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/drawableEvent"
+            android:text="@string/event"
+            android:textColor="@color/green"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvEvent"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toRightOf="@id/drawableEvent"
+            android:text="@string/create_a"
+            android:textSize="@dimen/sp15" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/recurringCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventCard">
+        <TextView
+            android:id="@+id/drawableRecurring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            android:background="@drawable/ic_baseline_add_task_24" />
+        <TextView
+            android:id="@+id/tvRecurring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/drawableRecurring"
+            android:text="@string/recurring_transaction"
+            android:textColor="@color/green"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRecurring"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toRightOf="@id/drawableRecurring"
+            android:text="@string/creating_recurring"
+            android:textSize="@dimen/sp15" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/billsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recurringCard">
+        <TextView
+            android:id="@+id/drawableBills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            android:background="@drawable/ic_baseline_article_24" />
+        <TextView
+            android:id="@+id/tvBills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/drawableBills"
+            android:text="@string/bills"
+            android:textColor="@color/green"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBills"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toRightOf="@id/drawableBills"
+            android:text="@string/Monitor_your"
+            android:textSize="@dimen/sp15" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

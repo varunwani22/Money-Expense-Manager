@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.developer.moneylover">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/new_icon_ml"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/new_icon_ml"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MoneyLover">
+        <activity android:name="com.developer.moneylover.views.EditTransactionActivity" />
+        <activity android:name="com.developer.moneylover.views.ShowTransactionDetails" />
+        <activity android:name="com.developer.moneylover.views.WebViewActivity" />
+        <activity
+            android:name="com.developer.moneylover.views.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name="com.developer.moneylover.views.MainActivity" />
+        <activity android:name="com.developer.moneylover.views.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.developer.moneylover.views.login_page.LoginActivity" />
+        <activity android:name="com.developer.moneylover.views.RegisterActivity" />
+
+        <activity android:name="com.developer.moneylover.views.SignInActivity" />
+        <activity android:name="com.developer.moneylover.views.AboutActivity"/>
+        <activity android:name="com.developer.moneylover.views.FacebookActivity"/>
+    </application>
+
+</manifest>
