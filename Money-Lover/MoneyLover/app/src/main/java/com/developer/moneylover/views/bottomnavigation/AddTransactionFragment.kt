@@ -40,7 +40,7 @@ import java.util.*
 
 class AddTransactionFragment : Fragment(), OnCategoryClickListener {
 
-   private val REQUEST_CONTACT = 1
+    private val REQUEST_CONTACT = 1
 
     private val transactionDao by lazy {
         val roomDatabase = TransactionDatabase.getDatabase(requireContext())
@@ -150,24 +150,50 @@ class AddTransactionFragment : Fragment(), OnCategoryClickListener {
             .get(TransactionViewModel::class.java)
 
         btnSaveTransaction.setOnClickListener {
-            val date = etSelectDate.text.toString()
-            val category = etSelectCategory.text.toString()
-            val amount = etSelectAmount.text.toString().toInt()
-            val wallet = etSelectWallet.text.toString()
-            val note = etSelectNote.text.toString()
-            val with = etPeopleWith.text.toString()
-            val image = ivCategoryEt.drawable.toBitmap()
-            mImagePath = saveImageToInternalStorage(image)
+            if (isValid()) {
+                val date = etSelectDate.text.toString()
+                val category = etSelectCategory.text.toString()
+                val amount = etSelectAmount.text.toString().toInt()
+                val wallet = etSelectWallet.text.toString()
+                val note = etSelectNote.text.toString()
+                val with = etPeopleWith.text.toString()
+                val image = ivCategoryEt.drawable.toBitmap()
+                mImagePath = saveImageToInternalStorage(image)
 
-            val transactionEntity = TransactionEntity(amount, category, date, wallet, note, with, mImagePath)
+                val transactionEntity =
+                    TransactionEntity(amount, category, date, wallet, note, with, mImagePath)
 
 
-            viewModel.addTransaction(transactionEntity)
+                viewModel.addTransaction(transactionEntity)
 
-            startActivity(Intent(activity, MainActivity::class.java))
-            requireActivity().finish()
+                startActivity(Intent(activity, MainActivity::class.java))
+                requireActivity().finish()
+            }
         }
 
+    }
+
+    private fun isValid(): Boolean {
+        if (etSelectAmount.text.toString().isEmpty()) {
+            etSelectAmount.error = "Should not be Empty"
+            return false
+        }
+        if (etSelectWallet.text.toString().isBlank()) {
+            etSelectWallet.error = "Should not be Empty"
+            return false
+        }
+        if (etSelectNote.text.toString().isBlank()) {
+            etSelectNote.error = "Should not be Empty"
+        }
+        if (etSelectCategory.text.toString().isBlank()) {
+            etSelectCategory.error = "Should not be Empty"
+            return false
+        }
+        if (etSelectDate.text.toString().isBlank()) {
+            etSelectCategory.error = "Should not be Empty"
+            return false
+        }
+        return true
     }
 
     private fun customItemsListDialog(
@@ -209,7 +235,7 @@ class AddTransactionFragment : Fragment(), OnCategoryClickListener {
         }
     }
 
-//        fun selectedListItem(item: String, image: Int, selection: String) {
+    //        fun selectedListItem(item: String, image: Int, selection: String) {
 //
 //            when (selection) {
 //
@@ -220,38 +246,39 @@ class AddTransactionFragment : Fragment(), OnCategoryClickListener {
 //
 //            }
 //        }
-private fun saveImageToInternalStorage(bitmap: Bitmap): String {
+    private fun saveImageToInternalStorage(bitmap: Bitmap): String {
 
 
-    val wrapper = ContextWrapper(context)
+        val wrapper = ContextWrapper(context)
 
 
-    var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+        var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
 
-    // Mention a file name to save the image
-    file = File(file, "${UUID.randomUUID()}.jpg")
+        // Mention a file name to save the image
+        file = File(file, "${UUID.randomUUID()}.jpg")
 
-    try {
-        // Get the file output stream
-        val stream: OutputStream = FileOutputStream(file)
+        try {
+            // Get the file output stream
+            val stream: OutputStream = FileOutputStream(file)
 
-        // Compress bitmap
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            // Compress bitmap
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
 
-        // Flush the stream
-        stream.flush()
+            // Flush the stream
+            stream.flush()
 
-        // Close stream
-        stream.close()
-    } catch (e: IOException) { // Catch the exception
-        e.printStackTrace()
+            // Close stream
+            stream.close()
+        } catch (e: IOException) { // Catch the exception
+            e.printStackTrace()
+        }
+
+        // Return the saved image absolute path
+        return file.absolutePath
     }
 
-    // Return the saved image absolute path
-    return file.absolutePath
-}
-    companion object{
-        val IMAGE_DIRECTORY="CategoryImage"
+    companion object {
+        val IMAGE_DIRECTORY = "CategoryImage"
     }
 
 
